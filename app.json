@@ -21,6 +21,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "scheme": "ebuu-app",
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
