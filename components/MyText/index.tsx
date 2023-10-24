@@ -4,7 +4,7 @@ import { MyTextProps, TextType } from "../../types";
 
 export default function MyText({
   text,
-  textColor, // Pass the color as a prop
+  textColor,
   style,
   type = "default",
 }: MyTextProps) {
