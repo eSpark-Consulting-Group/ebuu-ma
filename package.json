@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@config-plugins/react-native-ble-plx": "^7.0.0",
+    "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "^6.1.9",
     "@shopify/react-native-skia": "0.1.196",
     "eas-cli": "^5.4.0",

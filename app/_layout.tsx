@@ -29,7 +29,12 @@ export default function Layout() {
     <ThemeProvider value={MyTheme}>
       <SafeAreaView style={{ flex: 1 }}>
         <View
-          style={{ flex: 1, padding: 10, backgroundColor: colors.background }}
+          style={{
+            flex: 1,
+            padding: 10,
+            paddingHorizontal: 20,
+            backgroundColor: colors.background,
+          }}
         >
           <Slot />
         </View>
