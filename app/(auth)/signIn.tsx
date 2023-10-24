@@ -8,7 +8,13 @@ export default function signIn() {
     <View>
       <MyText text="Welcome." type={"title"} />
       <MyText text="Create an account" type={"subTitle"} />
-      <MyInput label="Email" placeholder="Enter email" icon />
+      <MyInput
+        label="Email"
+        placeholder="Enter email"
+        icon={"mail-outline"}
+        password
+        showPass={false}
+      />
     </View>
   );
 }
