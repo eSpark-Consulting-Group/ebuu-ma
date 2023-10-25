@@ -1,17 +1,18 @@
-import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TextInput, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import MyText from "../MyText";
+import GapView from "../GapView";
 
 export type InputProps = {
   label?: string;
   placeholder?: string;
   icon?: string;
   password?: boolean;
+  signIn?: boolean;
   text?: string;
   onChange?: (val: string) => void;
-  showPass?: boolean;
 };
 
 export default function MyInput({
@@ -19,17 +20,18 @@ export default function MyInput({
   placeholder,
   icon,
   password = false,
-  showPass = false,
   onChange,
   text,
+  signIn,
 }: InputProps) {
+  const [showPass, setShowPass] = useState(false);
   return (
-    <View>
+    <View style={{ marginBottom: password ? 0 : 16 }}>
       {label && <MyText text={label} style={{ marginBottom: 6 }} />}
       <View style={styles.inputContainerStyle}>
-        {icon && <Ionicons name={icon as any} size={26} color="black" />}
+        {icon && <Ionicons name={icon as any} size={20} color="black" />}
         <TextInput
-          secureTextEntry={password ? true : false}
+          secureTextEntry={password ? (showPass ? false : true) : false}
           placeholder={placeholder}
           style={styles.inputStyle}
           value={text!}
@@ -37,12 +39,20 @@ export default function MyInput({
         />
         {password && (
           <Ionicons
-            name={showPass ? "md-eye" : "md-eye-off-outline"}
+            name={showPass ? "eye-outline" : "md-eye-off-outline"}
             size={24}
             color="black"
+            onPress={() => setShowPass(!showPass)}
           />
         )}
       </View>
+      {signIn && (
+        <MyText
+          text="Forgot password?"
+          style={{ alignSelf: "flex-end" }}
+          textColor="#d0d4dd"
+        />
+      )}
     </View>
   );
 }
@@ -58,7 +68,6 @@ const styles = StyleSheet.create({
   inputStyle: {
     flex: 1,
     height: "100%",
-    // backgroundColor: "pink",
     padding: 10,
   },
 });
