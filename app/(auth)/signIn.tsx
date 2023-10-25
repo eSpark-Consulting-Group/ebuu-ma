@@ -25,12 +25,14 @@ export default function signIn() {
           icon="lock-closed-outline"
         />
         <GapView length={40} />
-        <MainButton
-          title="Sign In"
-          onPress={() => {
-            console.log("test");
-          }}
-        />
+        <Link href={"/(home)"} asChild>
+          <MainButton
+            title="Sign In"
+            onPress={() => {
+              console.log("test");
+            }}
+          />
+        </Link>
         <View
           style={{
             justifyContent: "center",
