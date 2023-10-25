@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { colors } from "../../theme";
 
 interface IRadioButton {
@@ -19,17 +19,18 @@ export default CustomRadioButton;
 
 const styles = StyleSheet.create({
   wrapperButton: {
-    borderWidth: 1,
+    borderWidth: 1.6,
     borderColor: colors.primary,
-    borderRadius: 2,
+    borderRadius: 2.5,
     alignItems: "center",
     justifyContent: "center",
-    width: 23,
-    height: 23,
+    width: 18,
+    height: 18,
   },
   selectedButton: {
-    backgroundColor: colors.primary,
-    width: 12,
-    height: 12,
+    backgroundColor: "black",
+    opacity: 0.6,
+    width: 8,
+    height: 8,
   },
 });
