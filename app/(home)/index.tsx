@@ -29,13 +29,6 @@ export default function App() {
         }}
       >
         <OwlSvg />
-        {/* <Image
-          source={require("../../assets/images/owl_icon.png")}
-          style={{
-            height: 100,
-            width: 100,
-          }}
-        /> */}
       </View>
       <MainButton
         title="Add a new device"
