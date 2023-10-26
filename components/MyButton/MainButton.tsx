@@ -1,17 +1,18 @@
+import React from "react";
 import {
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   TextStyle,
   ViewStyle,
 } from "react-native";
-import React from "react";
+
 import { colors } from "../../theme";
+import MyText from "../MyText";
 
 interface IMyButton {
-  title: String;
-  titleStyle?: TextStyle;
+  title: string;
+  textStyle?: TextStyle;
   btnSytle?: ViewStyle;
   disabled?: boolean;
   icon?: React.ReactNode;
@@ -19,7 +20,7 @@ interface IMyButton {
 }
 const MyButton = ({
   title,
-  titleStyle = {},
+  textStyle = {},
   btnSytle = {},
   disabled = false,
   icon = null,
@@ -39,7 +40,10 @@ const MyButton = ({
           justifyContent: "space-around",
         }}
       >
-        <Text style={[titleStyle, styles.primaryBtnText]}>{title}</Text>
+        <MyText
+          style={{ ...textStyle, ...styles.primaryBtnText }}
+          text={title!}
+        />
         {icon && icon}
       </View>
     </TouchableOpacity>
@@ -57,6 +61,7 @@ const styles = StyleSheet.create({
   },
   primaryBtnText: {
     color: colors.text,
-    fontSize: 24,
+    fontSize: 16,
+    paddingVertical: 2,
   },
 });
