@@ -3,6 +3,7 @@ import { Image, StyleSheet, View, ImageStyle } from "react-native";
 
 import { OwlSvg } from "../../assets";
 import { GapView, MainButton, MyText } from "../../components";
+import { Link } from "expo-router";
 
 export default function App() {
   return (
@@ -30,13 +31,15 @@ export default function App() {
       >
         <OwlSvg />
       </View>
-      <MainButton
-        title="Add a new device"
-        onPress={() => {
-          console.log("sad");
-        }}
-        btnSytle={{ paddingHorizontal: 15 }}
-      />
+      <Link href={"/(addDevice)"} asChild>
+        <MainButton
+          title="Add a new device"
+          onPress={() => {
+            console.log("sad");
+          }}
+          btnSytle={{ paddingHorizontal: 15 }}
+        />
+      </Link>
     </View>
   );
 }
