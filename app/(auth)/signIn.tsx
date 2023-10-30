@@ -55,7 +55,7 @@ export default function signIn() {
             <Ionicons name="logo-google" size={32} style={{ opacity: 0.15 }} />
             <MaterialIcons
               name="facebook"
-              size={36}
+              size={32}
               style={{ opacity: 0.15 }}
             />
             {Platform.OS == "ios" && (
