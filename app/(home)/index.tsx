@@ -4,6 +4,7 @@ import { Image, StyleSheet, View, ImageStyle } from "react-native";
 import { OwlSvg } from "../../assets";
 import { GapView, MainButton, MyText } from "../../components";
 import { Link } from "expo-router";
+import AccountModal from "../../components/modal";
 
 export default function App() {
   return (
@@ -13,6 +14,9 @@ export default function App() {
         alignItems: "center",
       }}
     >
+      <View style={{ marginStart: "auto" }}>
+        <AccountModal />
+      </View>
       <GapView length={50} />
       <MyText text="Ebuu" type="title" />
       <View
