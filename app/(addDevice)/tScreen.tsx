@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, Image } from "react-native";
-import { MyText } from "../../components";
 import { AntDesign } from "@expo/vector-icons";
+import { router } from "expo-router";
+
+import { MyText } from "../../components";
 
 export default function DLoad({ success }: { success: boolean }) {
+  useEffect(() => {
+    setTimeout(() => {
+      router.push({ pathname: "/(home)", params: { hasDevice: true } });
+    }, 2000);
+  }, []);
+
   return (
     <View style={styles.wrapper}>
       <View>
