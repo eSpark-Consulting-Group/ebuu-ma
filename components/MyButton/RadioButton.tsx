@@ -5,12 +5,42 @@ import { colors } from "../../theme";
 interface IRadioButton {
   selected: boolean;
   onPress: () => void;
+  rounded?: boolean;
+  color?: string;
+  disabled?: boolean;
 }
 
-const CustomRadioButton = ({ selected, onPress }: IRadioButton) => {
+const CustomRadioButton = ({
+  selected,
+  onPress,
+  rounded,
+  color,
+  disabled,
+}: IRadioButton) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.wrapperButton}>
-      <View style={selected && styles.selectedButton}></View>
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={disabled}
+      style={[
+        { ...styles.wrapperButton },
+        rounded && {
+          borderRadius: 50,
+          borderColor: color,
+        },
+      ]}
+    >
+      <View
+        style={[
+          selected && { ...styles.selectedButton },
+          rounded && {
+            backgroundColor: selected ? color : "transparent",
+            borderRadius: 50,
+            width: 9,
+            height: 9,
+            opacity: 1,
+          },
+        ]}
+      />
     </TouchableOpacity>
   );
 };
