@@ -3,6 +3,7 @@ import { Image, StyleSheet, View, ImageStyle, FlatList } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
 
 import { OwlSvg } from "../../assets";
+import AccountModal from "../../components/modal";
 import { GapView, MainButton, MyText, RadioButton } from "../../components";
 
 interface Item {
@@ -72,8 +73,13 @@ export default function App() {
         alignItems: "center",
       }}
     >
+      <View style={{ marginStart: "auto" }}>
+        <AccountModal />
+      </View>
+      
       <GapView length={20} />
       {!hasDevice && <MyText text="Ebuu" type="title" />}
+
       <View
         style={{
           backgroundColor: "#dee1e6",
