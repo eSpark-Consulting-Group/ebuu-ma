@@ -7,6 +7,7 @@ export const colors = {
   text: "rgb(246, 248, 255)",
   border: "rgb(216, 216, 216)",
   notification: "rgb(255, 59, 48)",
+  secondary: "rgb(222, 225, 230)"
 };
 
 export const MyTheme: Theme = {
