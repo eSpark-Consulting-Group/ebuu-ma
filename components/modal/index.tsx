@@ -12,41 +12,54 @@ const AccountModal = () => {
       id: "bd7acbea-c1b41-46c2-aed5-3ad53abb28ba-1",
       title: "Ebuu (device name)",
       iconName: "mobile-friendly",
+      path: "/(account)",
     },
     {
       id: "bd7acbea-c1b1-46c2-4aed5-3ad53abb28ba-2",
       title: "My Devices",
       iconName: "important-devices",
+      path: "/(account)",
     },
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1-3",
       title: "My Podcast",
       iconName: "podcast",
+      path: "/(account)",
     },
     {
       id: "bd7acbea-c1b1-46c2-3aed5-3ad53abb28ba1-4",
       title: "History",
       iconName: "change-history",
+      path: "/(account)/history",
     },
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb282ba-5",
       title: "Payment",
       iconName: "payment",
+      path: "/(account)",
     },
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba12-6",
       title: "Help & Support",
       iconName: "payment",
+      path: "/(account)",
     },
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1-81",
       title: "Logout",
       iconName: "logout",
+      path: "/(account)",
     },
   ];
 
   const listComponent = (item: any) => {
-    return <AccountView title={item.title} iconName={item.iconName} />;
+    return (
+      <AccountView
+        title={item.title}
+        iconName={item.iconName}
+        path={item.path}
+      />
+    );
   };
 
   return (
