@@ -46,7 +46,7 @@ const podcasts = () => {
     <View style={{ flex: 1 }}>
       <View style={styles.wrapper}>
         <OwlSvg />
-        <MyText style={styles.ebuText} text="Payment" type="subTitle" />
+        <MyText style={styles.ebuText} text="Podcast" type="subTitle" />
       </View>
 
       <View style={styles.radioBtnWrapper}>

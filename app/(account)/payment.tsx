@@ -108,7 +108,14 @@ const payment = () => {
       </View>
       <GapView length={30} />
       <MainButton
-        icon={<MaterialIcons name="payment" size={20} color={"#fff"} />}
+        icon={
+          <MaterialIcons
+            name="payment"
+            size={20}
+            color={"#fff"}
+            style={{ marginRight: 10 }}
+          />
+        }
         onPress={() => console.log("Pay Now")}
         title="Pay Now"
         btnSytle={{ backgroundColor: "#7731F4" }}
