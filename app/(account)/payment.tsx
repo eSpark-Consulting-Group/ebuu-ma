@@ -116,7 +116,7 @@ const payment = () => {
             style={{ marginRight: 10 }}
           />
         }
-        onPress={() => console.log("Pay Now")}
+        onPress={() => {}}
         title="Pay Now"
         btnSytle={{ backgroundColor: "#7731F4" }}
       />
