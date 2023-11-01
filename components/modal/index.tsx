@@ -24,7 +24,7 @@ const AccountModal = () => {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1-3",
       title: "My Podcast",
       iconName: "podcast",
-      path: "/(account)",
+      path: "/(account)/podcasts",
     },
     {
       id: "bd7acbea-c1b1-46c2-3aed5-3ad53abb28ba1-4",
@@ -36,7 +36,7 @@ const AccountModal = () => {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb282ba-5",
       title: "Payment",
       iconName: "payment",
-      path: "/(account)",
+      path: "/(account)/payment",
     },
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba12-6",

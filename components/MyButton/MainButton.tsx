@@ -37,14 +37,14 @@ const MyButton = ({
         style={{
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "space-around",
+          justifyContent: "center",
         }}
       >
+        {icon && icon}
         <MyText
           style={{ ...textStyle, ...styles.primaryBtnText }}
           text={title!}
         />
-        {icon && icon}
       </View>
     </TouchableOpacity>
   );
@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
     color: colors.text,
     fontSize: 16,
     paddingVertical: 2,
+    marginLeft: 10,
   },
 });
