@@ -76,7 +76,7 @@ export default function App() {
       <View style={{ marginStart: "auto" }}>
         <AccountModal />
       </View>
-      
+
       <GapView length={20} />
       {!hasDevice && <MyText text="Ebuu" type="title" />}
 

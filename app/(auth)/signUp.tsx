@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Platform } from "react-native";
-import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 
 import {
   GapView,
@@ -69,12 +69,8 @@ export default function signUp() {
               width: Platform.OS == "ios" ? "50%" : "30%",
             }}
           >
-            <Ionicons name="logo-google" size={32} style={{ opacity: 0.15 }} />
-            <MaterialIcons
-              name="facebook"
-              size={32}
-              style={{ opacity: 0.15 }}
-            />
+            <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
+            <FontAwesome5 name="facebook" size={30} style={{ opacity: 0.15 }} />
             {Platform.OS == "ios" && (
               <AntDesign name="apple-o" size={32} style={{ opacity: 0.15 }} />
             )}
