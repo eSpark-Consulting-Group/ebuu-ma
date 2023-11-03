@@ -26,7 +26,7 @@ export default function MyInput({
 }: InputProps) {
   const [showPass, setShowPass] = useState(false);
   return (
-    <View style={{ marginBottom: password ? 0 : 16 }}>
+    <View style={{}}>
       {label && <MyText text={label} style={{ marginBottom: 6 }} />}
       <View style={styles.inputContainerStyle}>
         {icon && <Ionicons name={icon as any} size={20} color="black" />}
