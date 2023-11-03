@@ -104,7 +104,9 @@ export default function App() {
             width: "100%",
             justifyContent: "space-between",
           }}
-          ListHeaderComponent={() => <MyText text="My devices" type="title" />}
+          ListHeaderComponent={() => (
+            <MyText text="My devices" type="title" style={{ fontSize: 36 }} />
+          )}
           ListHeaderComponentStyle={{ alignSelf: "center", marginBottom: 50 }}
           renderItem={renderItem}
           keyExtractor={(item) => item?.id.toString()}

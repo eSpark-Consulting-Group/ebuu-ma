@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, Image } from "react-native";
 import { MyText } from "../../components";
+import useBLE from "../../hooks/useBle";
 
 export default function DLoad({ scan }: { scan: boolean }) {
+  const { requestPermissions, scanForPeripherals } = useBLE();
+  useEffect(() => {
+    handleScanDevices();
+  }, []);
+
+  const handleScanDevices = async () => {
+    const permissionEnabled = await requestPermissions();
+    if (permissionEnabled) {
+      scanForPeripherals();
+    }
+  };
+
   return (
     <View style={styles.wrapper}>
       <View>

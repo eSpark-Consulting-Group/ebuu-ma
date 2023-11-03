@@ -1,9 +1,11 @@
 import React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { Formik } from "formik";
 
 import { MyInput, MyText, MainButton, GapView } from "../../components";
+import { validationSchema } from "../../constants";
 
 export default function signIn() {
   return (
@@ -16,23 +18,70 @@ export default function signIn() {
           style={{ fontWeight: "700" }}
         />
         <GapView length={40} />
-        <MyInput label="Email" placeholder="Enter email" icon="mail-outline" />
-        <MyInput
-          label="Password"
-          placeholder="Enter password"
-          password
-          signIn
-          icon="lock-closed-outline"
-        />
-        <GapView length={40} />
-        <Link href={"/(home)"} asChild>
-          <MainButton
-            title="Sign In"
-            onPress={() => {
-              console.log("test");
-            }}
-          />
-        </Link>
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          onSubmit={async (values, { resetForm }) => {
+            router.push("/(home)");
+          }}
+          validationSchema={validationSchema}
+        >
+          {({
+            handleChange,
+            handleSubmit,
+            errors,
+            setFieldTouched,
+            touched,
+            values,
+          }) => (
+            <>
+              <MyInput
+                label="Email"
+                placeholder="Enter email"
+                icon="mail-outline"
+                text={values.email}
+                onChange={handleChange("email")}
+              />
+              {touched.email && errors.email ? (
+                <MyText
+                  text={errors.email}
+                  textColor={"red"}
+                  style={{ opacity: 0.6, fontSize: 14 }}
+                />
+              ) : (
+                <View />
+              )}
+              <GapView length={15} />
+              <MyInput
+                label="Password"
+                placeholder="Enter password"
+                icon="lock-closed-outline"
+                text={values.password}
+                onChange={handleChange("password")}
+                password
+                signIn
+              />
+              {touched.password && errors.password ? (
+                <MyText
+                  text={errors.password}
+                  textColor={"red"}
+                  style={{ opacity: 0.6, fontSize: 14 }}
+                />
+              ) : (
+                <View />
+              )}
+              <GapView length={40} />
+              <MainButton
+                title="Sign In"
+                onPress={() => {
+                  handleSubmit();
+                }}
+              />
+            </>
+          )}
+        </Formik>
         <View
           style={{
             justifyContent: "center",
