@@ -6,6 +6,7 @@ import * as Font from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { MyTheme, colors } from "../theme";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 let customFonts = {
   "Gothic-Bold": require("../assets/fonts/GothicA1-Bold.ttf"),
@@ -18,6 +19,10 @@ export default function Layout() {
 
   useEffect(() => {
     loadFonts();
+    GoogleSignin.configure({
+      webClientId:
+        "773517305126-p43jeo2iejosd629rkljffpu92s6n09o.apps.googleusercontent.com",
+    });
   }, []);
 
   const loadFonts = async () => {

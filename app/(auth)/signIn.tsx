@@ -1,9 +1,10 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
 import { MyInput, MyText, MainButton, GapView } from "../../components";
+import { _signIn, onFacebookButtonPress } from "./functions";
 
 export default function signIn() {
   return (
@@ -52,8 +53,16 @@ export default function signIn() {
               width: Platform.OS == "ios" ? "50%" : "30%",
             }}
           >
-            <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
-            <FontAwesome5 name="facebook" size={30} style={{ opacity: 0.15 }} />
+            <TouchableOpacity onPress={_signIn}>
+              <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onFacebookButtonPress}>
+              <FontAwesome5
+                name="facebook"
+                size={30}
+                style={{ opacity: 0.15 }}
+              />
+            </TouchableOpacity>
             {Platform.OS == "ios" && (
               <AntDesign name="apple-o" size={32} style={{ opacity: 0.15 }} />
             )}
