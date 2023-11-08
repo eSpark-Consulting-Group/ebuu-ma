@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Alert, Modal, StyleSheet, View } from "react-native";
+import { FlatList } from "react-native";
+import { Fontisto, Ionicons } from "@expo/vector-icons";
+
 import AccountView from "./accountList";
 import MyText from "../MyText";
-import { FlatList } from "react-native";
-import { Fontisto } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 const AccountModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const flatListData = [
@@ -97,9 +98,8 @@ const AccountModal = () => {
           />
         </View>
       </Modal>
-
-      <MaterialCommunityIcons
-        name="devices"
+      <Ionicons
+        name="ios-menu"
         size={35}
         color="black"
         onPress={() => setModalVisible(true)}

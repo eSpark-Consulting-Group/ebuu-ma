@@ -3,7 +3,7 @@ import { LoginManager, AccessToken } from "react-native-fbsdk-next";
 import auth from "@react-native-firebase/auth";
 import { router } from "expo-router";
 
-export const _signIn = async () => {
+export const googleSignIn = async () => {
   try {
     await GoogleSignin.hasPlayServices();
     // let fcmToken = await AsyncStorage.getItem('fcmToken');
@@ -34,7 +34,7 @@ export const _signIn = async () => {
   }
 };
 
-export const onFacebookButtonPress = async () => {
+export const facebookSignIn = async () => {
   // Attempt login with permissions
   const result = await LoginManager.logInWithPermissions([
     "email",
