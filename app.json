@@ -11,13 +11,19 @@
         "@config-plugins/react-native-ble-plx",
         {
           "isBackgroundEnabled": true,
-          "modes": [
-            "peripheral",
-            "central"
-          ],
+          "modes": ["peripheral", "central"],
           "bluetoothAlwaysPermission": "Allow $(PRODUCT_NAME) to connect to bluetooth devices"
         }
-      ]
+      ],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "666832198893603",
+          "clientToken": "263d9becebe49207ee41b1863f625488",
+          "displayName": "EbuuApp"
+        }
+      ],
+      "@react-native-google-signin/google-signin"
     ],
     "splash": {
       "image": "./assets/splash.png",
@@ -25,9 +31,7 @@
       "backgroundColor": "#ffffff"
     },
     "scheme": "ebuu-app",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ebuu.app"

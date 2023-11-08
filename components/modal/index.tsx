@@ -49,7 +49,7 @@ const AccountModal = () => {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba1-81",
       title: "Logout",
       iconName: "logout",
-      path: "/(account)",
+      path: "/(auth)/signIn",
     },
   ];
 

@@ -1,10 +1,11 @@
 import React from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity, View } from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 import { Formik } from "formik";
 
 import { MyInput, MyText, MainButton, GapView } from "../../components";
+import { facebookSignIn, googleSignIn } from "./functions";
 import { validationSchema } from "../../constants";
 
 export default function signIn() {
@@ -101,8 +102,16 @@ export default function signIn() {
               width: Platform.OS == "ios" ? "50%" : "30%",
             }}
           >
-            <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
-            <FontAwesome5 name="facebook" size={30} style={{ opacity: 0.15 }} />
+            <TouchableOpacity onPress={googleSignIn}>
+              <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={facebookSignIn}>
+              <FontAwesome5
+                name="facebook"
+                size={30}
+                style={{ opacity: 0.15 }}
+              />
+            </TouchableOpacity>
             {Platform.OS == "ios" && (
               <AntDesign name="apple-o" size={32} style={{ opacity: 0.15 }} />
             )}
