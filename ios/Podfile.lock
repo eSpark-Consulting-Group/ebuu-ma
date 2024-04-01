@@ -7,6 +7,10 @@ PODS:
     - AppAuth/Core
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
+  - ESPProvision (2.1.2):
+    - ESPProvision/Core (= 2.1.2)
+  - ESPProvision/Core (2.1.2):
+    - SwiftProtobuf (~> 1.22.0)
   - EXApplication (5.3.1):
     - ExpoModulesCore
   - EXConstants (14.4.2):
@@ -547,6 +551,10 @@ PODS:
     - MultiplatformBleAdapter (= 0.2.0)
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+  - react-native-esp-idf-provisioning (0.2.10):
+    - ESPProvision (~> 2.1)
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
   - react-native-fbsdk-next (12.1.0):
     - React-Core
     - react-native-fbsdk-next/Core (= 12.1.0)
@@ -701,6 +709,7 @@ PODS:
   - RNSVG (13.9.0):
     - React-Core
   - SocketRocket (0.6.1)
+  - SwiftProtobuf (1.22.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -751,6 +760,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-ble-plx (from `../node_modules/react-native-ble-plx`)
+  - "react-native-esp-idf-provisioning (from `../node_modules/@orbital-systems/react-native-esp-idf-provisioning`)"
   - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
@@ -782,6 +792,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AppAuth
+    - ESPProvision
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
@@ -807,6 +818,7 @@ SPEC REPOS:
     - PromisesObjC
     - RecaptchaInterop
     - SocketRocket
+    - SwiftProtobuf
 
 EXTERNAL SOURCES:
   boost:
@@ -892,6 +904,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-ble-plx:
     :path: "../node_modules/react-native-ble-plx"
+  react-native-esp-idf-provisioning:
+    :path: "../node_modules/@orbital-systems/react-native-esp-idf-provisioning"
   react-native-fbsdk-next:
     :path: "../node_modules/react-native-fbsdk-next"
   react-native-safe-area-context:
@@ -951,6 +965,7 @@ SPEC CHECKSUMS:
   AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  ESPProvision: f05031824999e3493e5e90b7c74d0aebcd7777d0
   EXApplication: 042aa2e3f05258a16962ea1a9914bf288db9c9a1
   EXConstants: ce5bbea779da8031ac818c36bea41b10e14d04e1
   EXFileSystem: 2b826a3bf1071a4b80a8457e97124783d1ac860e
@@ -1013,6 +1028,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 194e32c6aab382d88713ad3dd0025c5f5c4ee072
   React-logger: cebf22b6cf43434e471dc561e5911b40ac01d289
   react-native-ble-plx: c033a0b82890910e321e7d031fd01a88bddc3854
+  react-native-esp-idf-provisioning: 0ac383ea2e19a9fe665bb1fa1157ee87a0dd1065
   react-native-fbsdk-next: 776f49479d36a1e72a1a367baadcc8391cd24374
   react-native-safe-area-context: 36cc67648134e89465663b8172336a19eeda493d
   react-native-skia: 73b15a92d31e322fd25e5bb7feff226c0a25215e
@@ -1041,6 +1057,7 @@ SPEC CHECKSUMS:
   RNScreens: 50ffe2fa2342eabb2d0afbe19f7c1af286bc7fb3
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  SwiftProtobuf: 7773c4e96a99d7b8ab7cda0fc30a883732ff93b1
   Yoga: b76f1acfda8212aa16b7e26bcce3983230c82603
 
 PODFILE CHECKSUM: 8545a84e4d1c98d3f79d9f0b12313f9281807971

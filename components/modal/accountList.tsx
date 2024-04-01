@@ -10,6 +10,7 @@ import { router } from "expo-router";
 import { colors } from "../../theme";
 import { Fontisto } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 interface IAccountView {
   iconName: any;
@@ -37,8 +38,18 @@ function AccountView({ iconName, title, path }: IAccountView) {
     }
   };
 
-  const handleNaivgation = (path: string) => {
-    router.push(path);
+  const handleNaivgation = async (path: string) => {
+    const logout = path.includes("signIn");
+    if (logout) {
+      try {
+        await GoogleSignin.signOut();
+        router.push(path);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      router.push(path);
+    }
   };
 
   return (

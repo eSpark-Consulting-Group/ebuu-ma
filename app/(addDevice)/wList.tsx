@@ -1,21 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
   Image,
   FlatList,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import { GapView, MyText } from "../../components";
+import {
+  ESPDevice,
+  ESPWifiList,
+} from "@orbital-systems/react-native-esp-idf-provisioning";
 
 export default function WList({
   setStep,
+  selectedDev,
+  setSelectedWiFi,
 }: {
   setStep: (step: number) => void;
+  selectedDev?: ESPDevice;
+  setSelectedWiFi: (wifi: ESPWifiList) => void;
 }) {
-  const renderItem = ({ item, index }: { item: any; index: number }) => {
+  const [wifiList, setWifiList] = useState<ESPWifiList[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (selectedDev) {
+      getWifiList();
+    }
+  }, [selectedDev]);
+
+  const getWifiList = async () => {
+    try {
+      setLoading(true);
+      const wifiList = await selectedDev?.scanWifiList();
+      console.log("react native wifilists", wifiList);
+      setWifiList(wifiList!);
+      // setLoading(true);
+      // const device = new ESPDevice({
+      //   ...connectedDevice,
+      // });
+      // const wifiList = await selectedDev.scanWifiList();
+      // console.log("react native wifilists", wifiList);
+      setLoading(false);
+    } catch (error) {
+      // setLoading(false);
+      console.error(error);
+    }
+  };
+
+  const renderItem = ({
+    item,
+    index,
+  }: {
+    item: ESPWifiList;
+    index: number;
+  }) => {
     return (
       <TouchableOpacity
         style={{
@@ -24,9 +67,12 @@ export default function WList({
           padding: 18,
           justifyContent: "space-between",
         }}
-        onPress={() => setStep(4)}
+        onPress={() => {
+          setSelectedWiFi(item);
+          setStep(4);
+        }}
       >
-        <MyText text={item} />
+        <MyText text={item.ssid} />
         <FontAwesome5 name="wifi" size={18} color="black" />
       </TouchableOpacity>
     );
@@ -38,6 +84,7 @@ export default function WList({
       <View style={{ alignItems: "center", flex: 0.2 }}>
         <MyText text="Select Wi-Fi network" style={{ opacity: 0.6 }} />
       </View>
+      {loading && <ActivityIndicator size={"large"} />}
       <View
         style={{
           flex: 0.5,
@@ -56,7 +103,7 @@ export default function WList({
           }}
         >
           <FlatList
-            data={["Wifi name 1", "Wifi name 2", "Wifi name 3"]}
+            data={wifiList}
             renderItem={renderItem}
             keyExtractor={(item, index) => Math.random() + index.toString()}
           />

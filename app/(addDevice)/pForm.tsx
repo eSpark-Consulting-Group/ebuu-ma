@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -10,12 +10,22 @@ import {
 import { FontAwesome5 } from "@expo/vector-icons";
 
 import { GapView, MainButton, MyInput, MyText } from "../../components";
+import {
+  ESPDevice,
+  ESPWifiList,
+} from "@orbital-systems/react-native-esp-idf-provisioning";
 
 export default function PForm({
   setStep,
+  selectedWifi,
+  selectedDev,
 }: {
   setStep: (step: number) => void;
+  selectedWifi?: ESPWifiList;
+  selectedDev?: ESPDevice;
 }) {
+  const [password, setPassword] = useState("");
+
   return (
     <View style={styles.wrapper}>
       <View style={{ flex: 0.2 }} />
@@ -28,10 +38,15 @@ export default function PForm({
           alignItems: "center",
         }}
       >
-        <MyText text="Connecting to : Wifi name" style={{ opacity: 0.6 }} />
+        <MyText
+          text={"Connecting to : " + selectedWifi?.ssid}
+          style={{ opacity: 0.6 }}
+        />
         <GapView length={40} />
         <TextInput
           placeholder="Password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
           style={{
             borderWidth: 1,
             padding: 5,
@@ -44,8 +59,15 @@ export default function PForm({
         <GapView length={40} />
         <MainButton
           title="Connect"
-          onPress={() => {
-            setStep(5);
+          onPress={async () => {
+            const res = await selectedDev?.provision(
+              selectedWifi?.ssid as string,
+              password
+            );
+
+            alert(res);
+
+            // setStep(5);
           }}
           btnSytle={{ paddingHorizontal: 15, paddingVertical: 6 }}
         />

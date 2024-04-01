@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Platform } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Platform,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 import { Formik } from "formik";
@@ -12,15 +18,46 @@ import {
   RadioButton,
 } from "../../components";
 import { validationSchema } from "../../constants";
+import { facebookSignIn, googleSignIn } from "./functions";
+import { colors } from "../../theme";
 
 export default function signUp() {
   const [selectedOption, setSelectedOption] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleSelect = (option: boolean) => {
     option == true ? setSelectedOption(false) : setSelectedOption(true);
   };
 
+  const signUpWithGoogle = async () => {
+    setLoading(true);
+    await googleSignIn("signUp");
+    setLoading(false);
+  };
+
+  const signUpWithFacebook = async () => {
+    setLoading(true);
+    await facebookSignIn("signUp");
+    setLoading(false);
+  };
+
   return (
     <View style={{ flex: 1 }}>
+      {loading && (
+        <View
+          style={{
+            height: "100%",
+            width: "100%",
+            position: "absolute",
+            backgroundColor: "#00000088",
+            top: 0,
+            zIndex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <ActivityIndicator size={"large"} color={colors.primary} />
+        </View>
+      )}
       <View style={{ flex: 1 }}>
         <MyText text="Welcome." type={"title"} />
         <MyText text="Create an account" type={"subTitle"} />
@@ -119,8 +156,16 @@ export default function signUp() {
               width: Platform.OS == "ios" ? "50%" : "30%",
             }}
           >
-            <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
-            <FontAwesome5 name="facebook" size={30} style={{ opacity: 0.15 }} />
+            <TouchableOpacity onPress={signUpWithGoogle}>
+              <FontAwesome5 name="google" size={30} style={{ opacity: 0.15 }} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={signUpWithFacebook}>
+              <FontAwesome5
+                name="facebook"
+                size={30}
+                style={{ opacity: 0.15 }}
+              />
+            </TouchableOpacity>
             {Platform.OS == "ios" && (
               <AntDesign name="apple-o" size={32} style={{ opacity: 0.15 }} />
             )}

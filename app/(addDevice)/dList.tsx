@@ -1,22 +1,68 @@
 import React from "react";
 import { View, StyleSheet, Image, FlatList } from "react-native";
 import { GapView, MainButton, MyText } from "../../components";
+import WifiManager from "react-native-wifi-reborn";
+import { ESPDevice } from "@orbital-systems/react-native-esp-idf-provisioning";
 
 export default function DList({
   setStep,
+  devices,
+  setSelectedDev,
 }: {
   setStep: (step: number) => void;
+  devices: any;
+  setSelectedDev: (dev: ESPDevice) => void;
 }) {
   const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
       <MainButton
-        title={item}
+        title={"Ebuu - Curiosity's best friend"}
         onPress={() => {
           console.log("sad 😢");
-          setStep(3);
+          connectDev(item);
+          // setStep(3);
         }}
       />
     );
+  };
+
+  const connectDev = async (device: any) => {
+    try {
+      console.log("dev", device);
+
+      WifiManager.connectToProtectedSSID(device.name, "", false, false).then(
+        async (a) => {
+          console.log("Connected successfully!", a);
+          const dev = new ESPDevice({
+            ...device,
+            security: 1,
+          });
+          const connectedDev: any = await dev.connect("abcd1234");
+          if (connectedDev?.status == "connected") {
+            setSelectedDev(dev);
+            setStep(3);
+          } else {
+            console.log("Unable to connect");
+          }
+        },
+        (e) => {
+          console.log("Connection failed!", e);
+        }
+      );
+
+      // setLoading(true);
+      // const device = new ESPDevice({
+      //   ...item,
+      //   security: 1,
+      // });
+      // console.log("device", device);
+      // const connectedDev = await device.connect("abcd1234");
+      // console.log("connectedDev", connectedDev);
+      // setConnectedDevice(device);
+      // setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -32,7 +78,7 @@ export default function DList({
         />
         <GapView length={40} />
         <FlatList
-          data={["Ebuu - Curiosity's best friend"]}
+          data={devices}
           renderItem={renderItem}
           ItemSeparatorComponent={() => <GapView />}
           keyExtractor={(item, index) => Math.random() + index.toString()}
