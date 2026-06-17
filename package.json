@@ -17,7 +17,7 @@
     "@react-navigation/native": "^6.1.9",
     "@shopify/react-native-skia": "0.1.196",
     "eas-cli": "^20.2.0",
-    "expo": "~49.0.15",
+    "expo": "~56.0.12",
     "expo-constants": "~14.4.2",
     "expo-dev-client": "~2.4.11",
     "expo-device": "~56.0.4",
