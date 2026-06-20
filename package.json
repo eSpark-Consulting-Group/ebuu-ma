@@ -31,7 +31,7 @@
     "react-native": "0.86.0",
     "react-native-base64": "^0.2.1",
     "react-native-ble-plx": "^3.5.1",
-    "react-native-fbsdk-next": "^12.1.0",
+    "react-native-fbsdk-next": "^13.4.3",
     "react-native-gesture-handler": "~3.0.1",
     "react-native-safe-area-context": "5.8.0",
     "react-native-screens": "~3.22.0",
