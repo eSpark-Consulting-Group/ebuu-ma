@@ -15,7 +15,7 @@
     "@react-native-firebase/auth": "^18.6.1",
     "@react-native-google-signin/google-signin": "^16.1.2",
     "@react-navigation/native": "^6.1.9",
-    "@shopify/react-native-skia": "0.1.196",
+    "@shopify/react-native-skia": "2.6.6",
     "eas-cli": "^20.2.0",
     "expo": "~56.0.12",
     "expo-constants": "~14.4.2",
