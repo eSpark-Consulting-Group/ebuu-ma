@@ -13,7 +13,7 @@
     "@shopify/react-native-skia": "0.1.196",
     "eas-cli": "^5.4.0",
     "expo": "~49.0.15",
-    "expo-dev-client": "~2.4.11",
+    "expo-dev-client": "~57.0.8",
     "expo-device": "~5.4.0",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
